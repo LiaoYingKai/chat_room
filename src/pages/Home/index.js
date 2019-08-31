@@ -1,5 +1,6 @@
 import React, { Component, } from 'react';
 import reactIcon from '../../icon/react-icon.png';
+import { NavLink, } from 'react-router-dom';
 import './style.scss';
 
 class Home extends Component {
