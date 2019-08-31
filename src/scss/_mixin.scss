@@ -1,0 +1,22 @@
+@mixin flex_column_center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+@mixin link_style {
+	a {
+		text-decoration:none;
+		font-size: 20px;
+		color: #D4D4D4;
+		&:hover{
+			color: #D7BA7D;
+		}
+		&:last-child{
+			margin-top: 40px;
+		}
+	}
+	.activeLink{
+		color: #D7BA7D;
+	}
+}

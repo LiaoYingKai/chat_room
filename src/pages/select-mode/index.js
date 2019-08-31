@@ -1,22 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { NavLink, } from 'react-router-dom';
+import Container from '../../components/container';
 import './style.scss';
 
-const propTypes = {
-
-};
-
-class SelectModePage extends Component {
-	render() {
-		return (
-			<div>
-				Hello world
-			</div>
-		);
-	}
+function Home() {
+	return (
+		<Container className="select-mode">
+			<NavLink exact to="/"> [隨機配對1對1聊天] </NavLink>
+			<NavLink to="/"> [進入聊天大廳] </NavLink>
+		</Container>
+	);
 }
 
-SelectModePage.propTypes = propTypes;
-
-export default SelectModePage;
+export default Home;

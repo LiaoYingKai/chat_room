@@ -1,0 +1,5 @@
+@import '../../scss//mixin';
+.select-mode{
+	@include flex_column_center;
+	@include link_style;
+}
