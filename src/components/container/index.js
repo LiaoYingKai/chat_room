@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import './style.scss';
 
 const propTypes = {
@@ -7,12 +8,13 @@ const propTypes = {
 		PropTypes.node,
 		PropTypes.string,
 	]),
+	className: PropTypes.string,
 };
 
-function Container({ children }) {
+function Container({ children, className }) {
 	return (
 		<div className="container__outter">
-			<div className="container__inner">
+			<div className={cx('container__inner', className)}>
 				{children}
 			</div>
 		</div>

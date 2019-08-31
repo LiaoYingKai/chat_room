@@ -1,17 +1,15 @@
 import React, { Component, } from 'react';
-import reactIcon from '../../icon/react-icon.png';
 import { NavLink, } from 'react-router-dom';
+import Container from '../../components/container';
 import './style.scss';
 
 class Home extends Component {
 	render() {
 		return (
-			<div className="home">
-				<img src={reactIcon}></img>
-				<div>
-					Hello World!!!
-				</div>
-			</div>
+			<Container className="home">
+				<NavLink exact to="/select-mode"> [匿名聊天] </NavLink>
+				<NavLink to="/input-nickname"> [暱稱聊天] </NavLink>
+			</Container>
 		);
 	}
 }
