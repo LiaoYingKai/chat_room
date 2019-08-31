@@ -1,23 +1,55 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, } from 'react';
 import { NavLink, } from 'react-router-dom';
 import Container from '../../components/container';
+import cx from 'classnames';
 import './style.scss';
 
-const propTypes = {
+class InputNicknamePage extends Component {
+	constructor() {
+		super();
+		this.state = {
+			value: '',
+			isEmpty: false,
+			placeholder: '輸入暱稱',
+		};
+		this._handleChangeValue = this._handleChangeValue.bind(this);
+		this._handleVerificationInput = this._handleVerificationInput.bind(this);
+	}
+	_handleChangeValue(event) {
+		this.setState({
+			isEmpty: false,
+			value: event.target.value,
+		});
+	}
+	_handleVerificationInput(event) {
+		const { value } = this.state;
 
-};
+		if (!value) {
+			event.preventDefault();
+			this.setState({
+				isEmpty: true,
+				placeholder: '暱稱不能爲空'
+			});
+		}
+	}
+	render() {
+		const { _handleVerificationInput, _handleChangeValue } = this;
+		const { value, isEmpty, placeholder } = this.state;
 
-function InputNicknamePage() {
-	return (
-		<Container className="input-nickname">
-			<p>暱稱聊天</p>
-			<input placeholder="輸入暱稱"></input>
-			<NavLink to="/select-mode"> [確定] </NavLink>
-		</Container>
-	);
+		return (
+			<Container className="input-nickname">
+				<p>暱稱聊天</p>
+				<input 
+					placeholder={placeholder}
+					value={value} 
+					onChange={(event) => {_handleChangeValue(event);}}
+					className={cx({ 'input-nickname__empty-input': isEmpty })}
+				></input>
+				<NavLink to="/select-mode" onClick={(event) => {_handleVerificationInput(event);}}> [確定] </NavLink>
+			</Container>
+		);
+	}
+
 }
-
-InputNicknamePage.propTypes = propTypes;
 
 export default InputNicknamePage;
