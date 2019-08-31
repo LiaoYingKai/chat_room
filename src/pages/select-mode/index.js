@@ -6,8 +6,8 @@ import './style.scss';
 function Home() {
 	return (
 		<Container className="select-mode">
-			<NavLink exact to="/"> [隨機配對1對1聊天] </NavLink>
-			<NavLink to="/"> [進入聊天大廳] </NavLink>
+			<NavLink exact to="/mode/one-to-one-chat"> [隨機配對1對1聊天] </NavLink>
+			<NavLink to="/mode/lobby"> [進入聊天大廳] </NavLink>
 		</Container>
 	);
 }

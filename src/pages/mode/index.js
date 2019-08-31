@@ -1,14 +1,15 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import loadComponent from '../../layout/lib/loadable';
+import './style.scss';
 
 const Lobby = loadComponent({ loader: () => import('./lobby') });
 const GroupChart = loadComponent({ loader: () => import('./group-chat') });
 const OneToOneChat = loadComponent({ loader: () => import('./one-to-one-chat') });
 
-function Mode() {
+function ModePage() {
 	return (
-		<div>
+		<div className="mode-page">
 			hello world
 			<Switch>
 				<Route exact path="/mode/lobby" component={Lobby}></Route>
@@ -19,4 +20,4 @@ function Mode() {
 	);
 }
 
-export default Mode;
+export default ModePage;

@@ -1,6 +1,7 @@
 import React from 'react';
+import './style.scss';
 
-function Mode() {
+function Lobby() {
 	return (
 		<div>
 			lobby
@@ -8,4 +9,4 @@ function Mode() {
 	);
 }
 
-export default Mode;
+export default Lobby;
