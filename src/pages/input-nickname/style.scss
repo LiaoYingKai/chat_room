@@ -1,0 +1,24 @@
+@import '../../scss//mixin';
+.input-nickname{
+	@include flex_column_center;
+	@include link_style;
+	p {
+		color: #9CDCFE;
+		font-size: 20px;
+	}
+	input {
+		background-color: transparent;
+		border: none;
+		border-bottom: 1px #6C6C6C solid;
+		color: #6C6C6C;
+		text-align: center;
+		margin-top: 17px;
+		font-size: 14px;
+		&::placeholder {
+			color: #6C6C6C;
+		}
+	}
+	a:last-child {
+		margin-top: 23.5px
+	}
+}
