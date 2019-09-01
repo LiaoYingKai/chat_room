@@ -1,7 +1,7 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../button';
-import ChatRoom from '../chat-room';
+import ChatRoom from '../chat-room-list';
 import NewRoomModal from '../new-room-modal';
 import './style.scss';
 

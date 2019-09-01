@@ -6,8 +6,7 @@ import cx from 'classnames';
 import './style.scss';
 
 const Lobby = loadComponent({ loader: () => import('./lobby') });
-const GroupChart = loadComponent({ loader: () => import('./group-chat') });
-const OneToOneChat = loadComponent({ loader: () => import('./one-to-one-chat') });
+const ChatRoom = loadComponent({ loader: () => import('./chat-room') });
 
 class ModePage extends Component {
 	constructor() {
@@ -34,8 +33,7 @@ class ModePage extends Component {
 				<div className="mode-page__content">
 					<Switch>
 						<Route exact path="/mode/lobby" component={Lobby}></Route>
-						<Route exact path="/mode/gorup-chat" component={GroupChart}></Route>
-						<Route exact path="/mode/one-to-one-chat" component={OneToOneChat}></Route>
+						<Route exact path="/mode/chat-room" component={ChatRoom}></Route>
 					</Switch>
 				</div>
 			</div>

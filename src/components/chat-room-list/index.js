@@ -22,7 +22,7 @@ class ChatRoom extends Component {
 		return (
 			chatInfo.map((item, index) => {
 				return (
-					<div className="chat-room__item" key={`chat-room__${index}`}>
+					<div className="chat-room-list__item" key={`chat-room-list__${index}`}>
 						<div> {item.serialNumber} {item.chatName}</div>
 						<div> {item.people}/{item.peopleOfMax} </div>
 					</div>
@@ -36,11 +36,11 @@ class ChatRoom extends Component {
 
 		return (
 		
-			<div className="chat-room">
-				<div className="chat-room__title">
+			<div className="chat-room-list">
+				<div className="chat-room-list__title">
 					{title}
 				</div>
-				<div className="chat-room__content">
+				<div className="chat-room-list__content">
 					{_renderItem()}
 				</div>
 			</div>
