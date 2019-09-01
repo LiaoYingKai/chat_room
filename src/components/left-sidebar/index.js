@@ -1,6 +1,7 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../button';
+import ChatRoom from '../chat-room';
 import NewRoomModal from '../new-room-modal';
 import './style.scss';
 
@@ -24,16 +25,40 @@ class LeftSidebar extends Component {
 					className="left-sidebar__input"
 					placeholder="搜尋聊天室名稱或編號"
 				></input>
-				<div className="left-sidebar__chat-room">
-					<div className="left-sidebar__chat-room-title">
-
-					</div>
-				</div>
-				<div className="left-sidebar__chat-room">
-					<div className="left-sidebar__chat-room-title">
-
-					</div>
-				</div>
+				<ChatRoom
+					title={"公開聊天室（11）"}
+					chatInfo={[
+						{
+							serialNumber: 'C001',
+							chatName: '聊天室名稱',
+							people: 3,
+							peopleOfMax: 15,
+						},
+						{
+							serialNumber: 'C001',
+							chatName: '聊天室名稱',
+							people: 3,
+							peopleOfMax: 15,
+						},
+						{
+							serialNumber: 'C001',
+							chatName: '聊天室名稱',
+							people: 3,
+							peopleOfMax: 15,
+						},
+					]}
+				/>
+				<ChatRoom
+					title={"公開聊天室（11）"}
+					chatInfo={[
+						{
+							serialNumber: 'C001',
+							chatName: '聊天室名稱',
+							people: 3,
+							peopleOfMax: 15,
+						},
+					]}
+				/>
 				<Button className="left-sidebar__button">
 					新增聊天室
 				</Button>

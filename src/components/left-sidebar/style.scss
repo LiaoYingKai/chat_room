@@ -47,12 +47,10 @@
 			color: #6C6C6C;
 		}
 	}
-	&_chat-room {
-		&-title {
 
-		}
-	}
 	&__button {
 		background-color: transparent;
+		position: relative;
+		top: 60px;
 	}
 }
