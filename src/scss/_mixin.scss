@@ -20,3 +20,15 @@
 		color: #D7BA7D;
 	}
 }
+
+@mixin input_style {
+	background-color: transparent;
+		border: none;
+		border-bottom: 1px #6C6C6C solid;
+		color: #6C6C6C;
+		text-align: center;
+		font-size: 14px;
+		&::placeholder {
+			color: #6C6C6C;
+		}
+}

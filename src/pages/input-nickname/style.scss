@@ -7,17 +7,8 @@
 		font-size: 20px;
 	}
 	input {
-		border-radius: 4px;
-		background-color: transparent;
-		border: none;
-		border-bottom: 1px #6C6C6C solid;
-		color: #6C6C6C;
-		text-align: center;
 		margin-top: 17px;
-		font-size: 14px;
-		&::placeholder {
-			color: #6C6C6C;
-		}
+		@include input_style;
 	}
 	.input-nickname__empty-input {
 		border: 0;
