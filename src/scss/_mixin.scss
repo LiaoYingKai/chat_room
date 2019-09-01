@@ -32,3 +32,11 @@
 			color: #6C6C6C;
 		}
 }
+
+@mixin arrow($border, $width, $deg) {
+	border-bottom: $border solid #D4D4D4;
+	border-left: $border solid #D4D4D4;
+	width: $width;
+	height: $width;
+	transform: rotate($deg);
+}

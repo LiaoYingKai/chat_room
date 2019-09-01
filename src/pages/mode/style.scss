@@ -4,8 +4,18 @@
 	display: flex;
 	&__sidebar{
 		width: 308px;
+		transition: 0.5s;
 	}
 	&__content {
 		width: 492px;
+		transition: 0.5s;
+	}
+	&--close-side-bar {
+		.mode-page__sidebar {
+			width: 50px;
+		}
+		.mode-page__content {
+			width: 750px;
+		}
 	}
 }
