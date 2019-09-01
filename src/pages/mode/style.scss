@@ -1,0 +1,11 @@
+.mode-page{
+	width: 800px;
+	height: 800px;
+	display: flex;
+	&__sidebar{
+		width: 308px;
+	}
+	&__content {
+		width: 492px;
+	}
+}

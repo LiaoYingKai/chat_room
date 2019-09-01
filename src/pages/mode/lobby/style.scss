@@ -1,0 +1,11 @@
+@import '../../../scss/mixin';
+.lobby {
+	background-color: #1E1E1E;
+	height: 100%;
+	@include flex_column_center;
+	button {
+		margin-bottom: 22px;
+		background-color: transparent;
+		width: 135px;
+	}
+}
