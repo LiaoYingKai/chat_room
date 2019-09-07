@@ -12,7 +12,6 @@ const defaultProps = {
 	onClick: () => {},
 };
 
-
 function Button({ onClick, className, children }) {
 	return (
 		<button
