@@ -1,4 +1,7 @@
 import {
+	CONNECTION,
+	CONNECTION_SUCCESS,
+	CONNECTION_FAIL,
 	CREATE_ROOM,
 	CREATE_ROOM_SUCCESS,
 	CREATE_ROOM_FAIL,
@@ -15,6 +18,38 @@ import {
 	GET_MESSAGE_SUCCESS,
 	GET_MESSAGE_FAIL,
 } from './action-type';
+import io from 'socket.io-client';
+
+let socket;
+
+export function connection() {
+	return {
+		type: CONNECTION,
+	};
+}
+
+export function connectionSuccess() {
+	return {
+		type: CONNECTION_SUCCESS,
+	};
+}
+
+export function connectionFail(error) {
+	return {
+		type: CONNECTION_FAIL,
+		error,
+	};
+}
+
+export function connectionSocket() {
+	return dispatch => {
+		dispatch(connection());
+		socket = io('http://localhost:8888');
+		socket.on('connect', () => {
+			dispatch(connectionSuccess());
+		});
+	};
+}
 
 export function createRoom() {
 	return {
