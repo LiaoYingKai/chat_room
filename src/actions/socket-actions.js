@@ -45,15 +45,20 @@ export function connectionSocket() {
 	return dispatch => {
 		dispatch(connection());
 		socket = io('http://localhost:8888');
-		socket.on('connect', () => {
+		socket.on('connectionSuccess', () => {
 			dispatch(connectionSuccess());
 		});
-		socket.on("getRoomList", list => {
+		socket.on('connectionFail', () => {
+			console.log('failed');
+			dispatch(connectionSuccess());
+		});
+
+		socket.on('getRoomList', list => {
 			console.log(list);
 		});
-		socket.on("getMessage", message => {
-			console.log(message);
-		});
+		// socket.on('getMessage', message => {
+		// 	console.log(message);
+		// });
 	};
 }
 
@@ -75,11 +80,16 @@ export function createRoomFail() {
 	};
 }
 
-export function createChatRoom() {
+export function createChatRoom(roomInfo) {
 	return dispatch => {
-		// dispatch(createRoom());
-		socket.emit("createRoom", "this is test room name");
-		
+		dispatch(createRoom());
+		socket.emit('createRoom', roomInfo);
+		socket.on('createRoomSuccess', () => {
+			dispatch(createRoomSuccess());
+		});
+		socket.on('createRoomFail', () => {
+			dispatch(createRoomFail());
+		});
 	};
 }
 

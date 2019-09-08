@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import Button from '../../components/button';
 import NewRoomModal from '../../components/new-room-modal';
 import { connect } from 'react-redux';
+import { createChatRoom } from '../../actions/socket-actions';
 import './style.scss';
 
 const propTypes = {
 	className: PropTypes.string,
+	createChatRoom: PropTypes.func,
 };
 
 class createRoomButton extends Component {
@@ -24,7 +26,9 @@ class createRoomButton extends Component {
 		});
 	}
 	_handleCreateRoom(roomInfo) {
-		console.log(roomInfo)
+		const { createChatRoom } = this.props;
+
+		createChatRoom(roomInfo);
 	}
 	render() {
 		const { visible } = this.state;
@@ -55,9 +59,9 @@ function mapStateToProps(state) {
 	};
 }
 
-function mapDispatchToProps(state) {
+function mapDispatchToProps(dispatch) {
 	return {
-
+		createChatRoom: (roomInfo) => dispatch(createChatRoom(roomInfo))
 	};
 }
 
