@@ -30,7 +30,7 @@ export default function status(state = initState, action) {
 		}
 		case CONNECTION_SUCCESS: {
 			return {
-				status: 'connection',
+				status: action.userStatus,
 				loadStatus: SUCCESS,
 				errorMessage: '',
 			};

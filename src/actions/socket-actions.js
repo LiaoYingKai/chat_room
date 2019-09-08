@@ -29,9 +29,10 @@ export function connection() {
 	};
 }
 
-export function connectionSuccess() {
+export function connectionSuccess(userStatus) {
 	return {
 		type: CONNECTION_SUCCESS,
+		userStatus
 	};
 }
 
@@ -46,8 +47,8 @@ export function connectionSocket() {
 	return dispatch => {
 		dispatch(connection());
 		socket = io('http://localhost:8888');
-		socket.on('connectionSuccess', () => {
-			dispatch(connectionSuccess());
+		socket.on('connectionSuccess', userStatus => {
+			dispatch(connectionSuccess(userStatus));
 		});
 		socket.on('connectionFail', () => {
 			console.log('failed');
