@@ -27,7 +27,7 @@ class createRoomButton extends Component {
 		const { className } = this.props;
 
 		return (
-			<React.Fragment>
+			<>
 				<Button 
 					className={className}
 					onClick={_handleClickNewRoomModal}
@@ -36,10 +36,9 @@ class createRoomButton extends Component {
 					visible={visible}
 					onToggleModal={_handleClickNewRoomModal}
 				/>
-			</React.Fragment>
+			</>
 		);
 	}
-
 }
 
 createRoomButton.propTypes = propTypes;
