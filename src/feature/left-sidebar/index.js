@@ -1,14 +1,16 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../button';
-import ChatRoom from '../chat-room-list';
-import CreateRoomButton from '../../feature/createRoomButton';
+import Button from '../../components/button';
+import ChatRoom from '../../components/chat-room-list';
+import CreateRoomButton from '../createRoomButton';
+import { connect } from 'react-redux';
 
 import './style.scss';
 
 const propTypes = {
 	onClick: PropTypes.func,
 	isClose: PropTypes.bool,
+	roomList: PropTypes.array,
 };
 
 const defaultProps = {
@@ -17,7 +19,7 @@ const defaultProps = {
 
 class LeftSidebar extends Component {
 	render() {
-		const { onClick, isClose } = this.props;
+		const { onClick, isClose, roomList } = this.props;
 
 		return (
 			<div className="left-sidebar">
@@ -41,27 +43,8 @@ class LeftSidebar extends Component {
 						placeholder="搜尋聊天室名稱或編號"
 					></input>
 					<ChatRoom
-						title={"公開聊天室（11）"}
-						chatInfo={[
-							{
-								serialNumber: 'C001',
-								chatName: '聊天室名稱',
-								people: 3,
-								peopleOfMax: 15,
-							},
-							{
-								serialNumber: 'C001',
-								chatName: '聊天室名稱',
-								people: 3,
-								peopleOfMax: 15,
-							},
-							{
-								serialNumber: 'C001',
-								chatName: '聊天室名稱',
-								people: 3,
-								peopleOfMax: 15,
-							},
-						]}
+						title={`公開聊天室（${roomList.length})`}
+						chatRoomList={roomList}
 					/>
 					<ChatRoom
 						title={"公開聊天室（11）"}
@@ -85,4 +68,11 @@ class LeftSidebar extends Component {
 LeftSidebar.propTypes = propTypes;
 LeftSidebar.defaultProps = defaultProps;
 
-export default LeftSidebar;
+function mapStateToProps(state) {
+	console.log(state.roomList)
+	return {
+		roomList: state.roomList
+	};
+}
+
+export default connect(mapStateToProps, null)(LeftSidebar);

@@ -1,7 +1,7 @@
 import React, { Component, } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import loadComponent from '../../layout/lib/loadable';
-import LeftSidebar from '../../components/left-sidebar';
+import LeftSidebar from '../../feature/left-sidebar';
 import cx from 'classnames';
 import './style.scss';
 
