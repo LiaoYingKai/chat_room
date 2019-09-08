@@ -1,8 +1,19 @@
 import React, { Component, } from 'react';
+import PropTypes from 'prop-types';
 import { NavLink, } from 'react-router-dom';
 import Container from '../../components/container';
 import cx from 'classnames';
+import { connect } from 'react-redux';
+import { updateUserStatus } from '../../actions/socket-actions';
 import './style.scss';
+
+const propTypes = {
+	updateUserStatus: PropTypes.func,
+	user: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.object,
+	]),
+};
 
 class InputNicknamePage extends Component {
 	constructor() {
@@ -23,6 +34,7 @@ class InputNicknamePage extends Component {
 	}
 	_handleVerificationInput(event) {
 		const { value } = this.state;
+		const { updateUserStatus, user, } = this.props;
 
 		if (!value) {
 			event.preventDefault();
@@ -30,7 +42,9 @@ class InputNicknamePage extends Component {
 				isEmpty: true,
 				placeholder: '暱稱不能爲空'
 			});
+			return;
 		}
+		updateUserStatus(user, value);
 	}
 	render() {
 		const { _handleVerificationInput, _handleChangeValue } = this;
@@ -49,7 +63,20 @@ class InputNicknamePage extends Component {
 			</Container>
 		);
 	}
-
 }
 
-export default InputNicknamePage;
+InputNicknamePage.propTypes = propTypes;
+
+function mapStateToProps(state) {
+	return {
+		user: state.userStatus.status
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		updateUserStatus: (user, userName) => dispatch(updateUserStatus(user, 'name', userName))
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InputNicknamePage);

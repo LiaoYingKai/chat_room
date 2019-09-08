@@ -56,7 +56,7 @@ export function onSocket() {
 			dispatch(connectionFail());
 		});
 
-		socket.on('userStatus', userStatus => {
+		socket.on('userStatusSuccess', userStatus => {
 			dispatch(userStatusSuccess(userStatus));
 		});
 
@@ -109,12 +109,15 @@ export function roomList(list) {
 }
 
 export function updateUserStatus(user, key, value) {
-	if (key === 'roomId') {
-		socket.emit('setUserName', { user, value });
-	}
-	if (key === 'userName') {
-		socket.emit('setUserRoomId', { user, value });
-	}
+	return dispatch => {
+		dispatch(userStatus());
+		if (key === 'roomId') {
+			socket.emit('setUserRoomId', { user, value });
+		}
+		if (key === 'name') {
+			socket.emit('setUserName', { user, value });
+		}
+	};
 }
 
 export function createRoom() {
