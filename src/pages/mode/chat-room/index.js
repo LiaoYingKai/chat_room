@@ -1,7 +1,7 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { connectionSocket, createChatRoom } from '../../../actions/socket-actions';
+import { connectionSocket } from '../../../actions/socket-actions';
 import './style.scss';
 const propTypes = {};
 
@@ -16,24 +16,17 @@ class ChatRoom extends Component {
 			</div>
 		);
 	}
-	componentDidMount() {
-		this.props.connection();
-		// this.props.createChatRoom();
-	}
 }
 
 ChatRoom.propTypes = propTypes;
 
 function mapStateToProps (state) {
 	return {
-		status: state.status,
 	};
 }
 
 function mapDispatchToProps (dispatch) {
 	return {
-		connection: () => dispatch(connectionSocket()),
-		createChatRoom: () => dispatch(createChatRoom())
 	};
 }
 
