@@ -1,7 +1,7 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { connectionSocket } from '../../../actions/socket-actions';
+import { connectionSocket, createChatRoom } from '../../../actions/socket-actions';
 import './style.scss';
 const propTypes = {};
 
@@ -18,18 +18,7 @@ class ChatRoom extends Component {
 	}
 	componentDidMount() {
 		this.props.connection();
-		// const socket = io('http://localhost:8888');
-
-		// socket.on('connect', function() {
-		// 	console.log("successful");
-		// });
-		// socket.on('test', message => {
-		// 	console.log(message)
-		// })
-		// socket.emit('getMessage', '只回傳給發送訊息的 client');
-		// socket.on('getMessage', message => {
-		// 	console.log(message);
-		// });
+		// this.props.createChatRoom();
 	}
 }
 
@@ -43,7 +32,8 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
 	return {
-		connection: () => dispatch(connectionSocket())
+		connection: () => dispatch(connectionSocket()),
+		createChatRoom: () => dispatch(createChatRoom())
 	};
 }
 

@@ -48,6 +48,12 @@ export function connectionSocket() {
 		socket.on('connect', () => {
 			dispatch(connectionSuccess());
 		});
+		socket.on("getRoomList", list => {
+			console.log(list);
+		});
+		socket.on("getMessage", message => {
+			console.log(message);
+		});
 	};
 }
 
@@ -66,6 +72,14 @@ export function createRoomSuccess() {
 export function createRoomFail() {
 	return {
 		type: CREATE_ROOM_FAIL,
+	};
+}
+
+export function createChatRoom() {
+	return dispatch => {
+		// dispatch(createRoom());
+		socket.emit("createRoom", "this is test room name");
+		
 	};
 }
 
