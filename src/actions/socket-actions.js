@@ -5,6 +5,7 @@ import {
 	CREATE_ROOM,
 	CREATE_ROOM_SUCCESS,
 	CREATE_ROOM_FAIL,
+	GET_ROOM_LIST,
 	ADD_ROOM,
 	ADD_ROOM_SUCCESS,
 	ADD_ROOM_FAIL,
@@ -52,10 +53,7 @@ export function connectionSocket() {
 			console.log('failed');
 			dispatch(connectionSuccess());
 		});
-
-		socket.on('getRoomList', list => {
-			console.log(list);
-		});
+		dispatch(getChatRoomList());
 		// socket.on('getMessage', message => {
 		// 	console.log(message);
 		// });
@@ -89,6 +87,21 @@ export function createChatRoom(roomInfo) {
 		});
 		socket.on('createRoomFail', () => {
 			dispatch(createRoomFail());
+		});
+	};
+}
+
+export function getRoomList(list) {
+	return {
+		type: GET_ROOM_LIST,
+		list,
+	};
+}
+
+export function getChatRoomList() {
+	return dispatch => {
+		socket.on('getRoomList', (list) => {
+			dispatch(getRoomList(list));
 		});
 	};
 }

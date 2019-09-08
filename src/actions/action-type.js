@@ -6,6 +6,10 @@ export const CREATE_ROOM = 'CREATE_ROOM';
 export const CREATE_ROOM_SUCCESS = 'CREATE_ROOM_SUCCESS';
 export const CREATE_ROOM_FAIL = 'CREATE_ROOM_FAIL';
 
+export const GET_ROOM_LIST = 'GET_ROOM_LIST';
+export const GET_ROOM_LIST_SUCCESS = 'GET_ROOM_LIST_SUCCESS';
+export const GET_ROOM_LIST_FAIL = 'GET_ROOM_LIST_FAIL';
+
 export const ADD_ROOM = 'ADD_ROOM';
 export const ADD_ROOM_SUCCESS = 'ADD_ROOM_SUCCESS';
 export const ADD_ROOM_FAIL = 'ADD_ROOM_FAIL';
