@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import loadComponent from '../lib/loadable';
 
-const Home = loadComponent({ loader: () => import('../../pages/Home') });
+const Home = loadComponent({ loader: () => import('../../pages/home') });
 const InputNicknamePage = loadComponent({ loader: () => import('../../pages/input-nickname') });
 const SelectModePage = loadComponent({ loader: () => import('../../pages/select-mode') });
 const Mode = loadComponent({ loader: () => import('../../pages/mode') });
