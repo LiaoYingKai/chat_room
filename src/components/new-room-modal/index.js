@@ -4,8 +4,14 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const propTypes = {
-	visible:PropTypes.bool,
-	onToggleModal:PropTypes.func,
+	visible: PropTypes.bool,
+	onToggleModal: PropTypes.func,
+	onSubmit: PropTypes.func,
+};
+
+const defaultProps = {
+	onToggleModal: () => {},
+	onSubmit: () => {},
 };
 
 class NewRoomModal extends Component {
@@ -59,9 +65,9 @@ class NewRoomModal extends Component {
 	}
 
 	_handleSubmit() {
-		const { onToggleModal } = this.props;
+		const { onToggleModal, onSubmit } = this.props;
 
-		// use callback to create rooom
+		onSubmit(this.state);
 		this._handleInitState();
 		onToggleModal();
 	}
@@ -174,5 +180,6 @@ class NewRoomModal extends Component {
 }
 
 NewRoomModal.propTypes = propTypes;
+NewRoomModal.defaultProps = defaultProps;
 
 export default NewRoomModal;

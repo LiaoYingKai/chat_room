@@ -2,6 +2,7 @@ import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../components/button';
 import NewRoomModal from '../../components/new-room-modal';
+import { connect } from 'react-redux';
 import './style.scss';
 
 const propTypes = {
@@ -15,15 +16,19 @@ class createRoomButton extends Component {
 			visible: false,
 		};
 		this._handleClickNewRoomModal = this._handleClickNewRoomModal.bind(this);
+		this._handleCreateRoom = this._handleCreateRoom.bind(this);
 	}
 	_handleClickNewRoomModal() {
 		this.setState({
 			visible: !this.state.visible,
 		});
 	}
+	_handleCreateRoom(roomInfo) {
+		console.log(roomInfo)
+	}
 	render() {
 		const { visible } = this.state;
-		const { _handleClickNewRoomModal } = this;
+		const { _handleClickNewRoomModal, _handleCreateRoom } = this;
 		const { className } = this.props;
 
 		return (
@@ -35,6 +40,7 @@ class createRoomButton extends Component {
 				<NewRoomModal
 					visible={visible}
 					onToggleModal={_handleClickNewRoomModal}
+					onSubmit={_handleCreateRoom}
 				/>
 			</>
 		);
@@ -43,4 +49,16 @@ class createRoomButton extends Component {
 
 createRoomButton.propTypes = propTypes;
 
-export default createRoomButton;
+function mapStateToProps(state) {
+	return {
+
+	};
+}
+
+function mapDispatchToProps(state) {
+	return {
+
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(createRoomButton);
