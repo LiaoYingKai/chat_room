@@ -19,13 +19,13 @@ class NewRoomModal extends Component {
 		super();
 		this.state = {
 			chatRoomName: '',
-			numOfPeople: '2',
+			numOfMaxPeople: '2',
 			isSettingPassword: false,
 			password: '',
 			roomStatus: 'public',
 		};
 		this._handleChangeChatRoomName = this._handleChangeChatRoomName.bind(this);
-		this._handleChangeNumOfPeople = this._handleChangeNumOfPeople.bind(this);
+		this._handleChangeNumOfMaxPeople = this._handleChangeNumOfMaxPeople.bind(this);
 		this._handleChangeCheck = this._handleChangeCheck.bind(this);
 		this._handleChangePassword = this._handleChangePassword.bind(this);
 		this._handleChangeRoomStatus = this._handleChangeRoomStatus.bind(this);
@@ -40,9 +40,9 @@ class NewRoomModal extends Component {
 		});
 	}
 
-	_handleChangeNumOfPeople(event) {
+	_handleChangeNumOfMaxPeople(event) {
 		this.setState({
-			numOfPeople: event.target.value,
+			numOfMaxPeople: event.target.value,
 		});
 	}
 
@@ -82,7 +82,7 @@ class NewRoomModal extends Component {
 	_handleInitState() {
 		this.setState({
 			chatRoomName: '',
-			numOfPeople: '2',
+			numOfMaxPeople: '2',
 			roomStatus: 'public',
 			isSettingPassword: false,
 			password: '',
@@ -93,14 +93,14 @@ class NewRoomModal extends Component {
 		const { visible } = this.props;
 		const { 
 			chatRoomName,
-			numOfPeople,
+			numOfMaxPeople,
 			isSettingPassword,
 			password,
 			roomStatus,
 		} = this.state;
 		const { 
 			_handleChangeChatRoomName,
-			_handleChangeNumOfPeople,
+			_handleChangeNumOfMaxPeople,
 			_handleChangeCheck,
 			_handleChangePassword,
 			_handleChangeRoomStatus,
@@ -121,8 +121,8 @@ class NewRoomModal extends Component {
 					限制
 					<div className="new-room-modal__select">
 						<select
-							value={numOfPeople}
-							onChange={_handleChangeNumOfPeople}
+							value={numOfMaxPeople}
+							onChange={_handleChangeNumOfMaxPeople}
 						>
 							<option value="2">2</option>
 							<option value="3">3</option>
