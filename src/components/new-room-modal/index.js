@@ -53,10 +53,6 @@ class NewRoomModal extends Component {
 						onClick={onToggleModal}
 					>[取消]</span>
 				</div>
-				{/* <div 
-					className="new-room-modal__button"
-					onClick={onToggleModal}
-				>[確定]</div> */}
 			</div>
 		);
 	}

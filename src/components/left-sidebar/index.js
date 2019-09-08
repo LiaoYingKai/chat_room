@@ -2,7 +2,8 @@ import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../button';
 import ChatRoom from '../chat-room-list';
-import NewRoomModal from '../new-room-modal';
+import CreateRoomButton from '../../feature/createRoomButton';
+
 import './style.scss';
 
 const propTypes = {
@@ -15,7 +16,6 @@ const defaultProps = {
 };
 
 class LeftSidebar extends Component {
-	
 	render() {
 		const { onClick, isClose } = this.props;
 
@@ -74,9 +74,7 @@ class LeftSidebar extends Component {
 							},
 						]}
 					/>
-					<Button className="left-sidebar__button">
-					新增聊天室
-					</Button>
+					<CreateRoomButton className="left-sidebar__button"/>
 				</div>
 
 			</div>

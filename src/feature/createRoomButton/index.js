@@ -4,7 +4,9 @@ import Button from '../../components/button';
 import NewRoomModal from '../../components/new-room-modal';
 import './style.scss';
 
-const propTypes = {};
+const propTypes = {
+	className: PropTypes.string,
+};
 
 class createRoomButton extends Component {
 	constructor() {
@@ -22,11 +24,12 @@ class createRoomButton extends Component {
 	render() {
 		const { visible } = this.state;
 		const { _handleClickNewRoomModal } = this;
+		const { className } = this.props;
 
 		return (
 			<React.Fragment>
 				<Button 
-					className="createRoomButton"
+					className={className}
 					onClick={_handleClickNewRoomModal}
 				>新增聊天室</Button>
 				<NewRoomModal

@@ -8,7 +8,6 @@ function Lobby() {
 		<div className="lobby">
 			<Button>隨機1對1配對</Button>
 			<Button>隨機進入群組</Button>
-			{/* <Button>新增聊天室</Button> */}
 			<CreateRoomButton/>
 		</div>
 	);
