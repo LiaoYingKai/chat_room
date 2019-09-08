@@ -4,14 +4,16 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const propTypes = {
-
+	visible:PropTypes.bool,
+	onToggleModal:PropTypes.func,
 };
 
 class NewRoomModal extends Component {
-	
 	render() {
+		const { visible, onToggleModal } = this.props;
+
 		return (
-			<div className="new-room-modal">
+			<div className="new-room-modal" style={ visible ? { display: 'block', } : { display: 'none' } }>
 				<p className="new-room-modal__title">新增聊天室</p>
 				<input placeholder="聊天室名稱" type="text"></input>
 				<div className="new-room-modal__people-of-room">
@@ -41,7 +43,20 @@ class NewRoomModal extends Component {
 					<p >//公開:顯示在聊天室大廳任何人都能加入</p>
 					<p >//私密:只能用搜尋聊天室才能找到</p>
 				</div>
-				<div className="new-room-modal__button">[確定]</div>
+				<div className="new-room-modal__button-group">
+					<span 
+						className="new-room-modal__button"
+						onClick={onToggleModal}
+					>[確定]</span>
+					<span 
+						className="new-room-modal__button"
+						onClick={onToggleModal}
+					>[取消]</span>
+				</div>
+				{/* <div 
+					className="new-room-modal__button"
+					onClick={onToggleModal}
+				>[確定]</div> */}
 			</div>
 		);
 	}

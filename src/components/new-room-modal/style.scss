@@ -92,7 +92,12 @@
 		font-size: 20px;
 		margin-bottom: 40px;
 	}
-	&__button{
+	&__button-group {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	.new-room-modal__button{
 		color: #D4D4D4;
 		font-size: 20px;
 		cursor: pointer;
