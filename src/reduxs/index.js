@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
-import status from './reducer/status';
+import connectionStatus from './reducer/connectionStatus';
+import userStatus from './reducer/userStatus';
 import createRoom from './reducer/createRoom';
 import roomList from './reducer/roomList';
 
 
 const musicPlayer = combineReducers({
-	status,
+	connectionStatus,
+	userStatus,
 	createRoom,
 	roomList,
 });

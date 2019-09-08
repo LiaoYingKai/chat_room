@@ -9,6 +9,10 @@ import './style.scss';
 const propTypes = {
 	className: PropTypes.string,
 	createChatRoom: PropTypes.func,
+	user: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.object,
+	]),
 };
 
 class createRoomButton extends Component {
@@ -26,9 +30,9 @@ class createRoomButton extends Component {
 		});
 	}
 	_handleCreateRoom(roomInfo) {
-		const { createChatRoom } = this.props;
+		const {  user, createChatRoom } = this.props;
 
-		createChatRoom(roomInfo);
+		createChatRoom(user, roomInfo);
 	}
 	render() {
 		const { visible } = this.state;
@@ -55,13 +59,13 @@ createRoomButton.propTypes = propTypes;
 
 function mapStateToProps(state) {
 	return {
-
+		user: state.userStatus.status
 	};
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		createChatRoom: (roomInfo) => dispatch(createChatRoom(roomInfo))
+		createChatRoom: (user, roomInfo) => dispatch(createChatRoom(user, roomInfo))
 	};
 }
 

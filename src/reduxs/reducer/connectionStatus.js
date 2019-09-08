@@ -14,7 +14,7 @@ const {
 } = LoadingStatusEnums;
 
 const initState = {
-	status: 'unconnection',
+	status: '',
 	loadStatus: NONE,
 	errorMessage: '',
 };
@@ -30,14 +30,14 @@ export default function status(state = initState, action) {
 		}
 		case CONNECTION_SUCCESS: {
 			return {
-				status: action.userStatus,
+				status: 'connection',
 				loadStatus: SUCCESS,
 				errorMessage: '',
 			};
 		}
 		case CONNECTION_FAIL: {
 			return {
-				status: 'connection fail',
+				status: 'disconnection',
 				loadStatus: FAILED,
 				errorMessage: action.error,
 			};

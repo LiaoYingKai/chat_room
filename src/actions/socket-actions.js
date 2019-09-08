@@ -2,10 +2,13 @@ import {
 	CONNECTION,
 	CONNECTION_SUCCESS,
 	CONNECTION_FAIL,
+	USER_STATUS,
+	USER_STATUS_SUCCESS,
+	USER_STATUS_FAIL,
 	CREATE_ROOM,
 	CREATE_ROOM_SUCCESS,
 	CREATE_ROOM_FAIL,
-	GET_ROOM_LIST,
+	ROOM_LIST,
 	ADD_ROOM,
 	ADD_ROOM_SUCCESS,
 	ADD_ROOM_FAIL,
@@ -29,10 +32,9 @@ export function connection() {
 	};
 }
 
-export function connectionSuccess(userStatus) {
+export function connectionSuccess() {
 	return {
 		type: CONNECTION_SUCCESS,
-		userStatus
 	};
 }
 
@@ -43,22 +45,76 @@ export function connectionFail(error) {
 	};
 }
 
+export function onSocket() {
+	return dispatch => {
+		socket.on('connectionSuccess', userStatus => {
+			dispatch(connectionSuccess());
+			dispatch(userStatusSuccess(userStatus));
+		});
+
+		socket.on('connectionFail', () => {
+			dispatch(connectionFail());
+		});
+
+		socket.on('userStatus', userStatus => {
+			dispatch(userStatusSuccess(userStatus));
+		});
+
+		socket.on('roomList', list => {
+			dispatch(roomList(list));
+		});
+
+		socket.on('createRoomSuccess', () => {
+			dispatch(createRoomSuccess());
+		});
+		socket.on('createRoomFail', () => {
+			dispatch(createRoomFail());
+		});
+	};
+}
+
 export function connectionSocket() {
 	return dispatch => {
 		dispatch(connection());
 		socket = io('http://localhost:8888');
-		socket.on('connectionSuccess', userStatus => {
-			dispatch(connectionSuccess(userStatus));
-		});
-		socket.on('connectionFail', () => {
-			console.log('failed');
-			dispatch(connectionSuccess());
-		});
-		dispatch(getChatRoomList());
-		// socket.on('getMessage', message => {
-		// 	console.log(message);
-		// });
+		dispatch(onSocket());
 	};
+}
+
+export function userStatus() {
+	return {
+		type: USER_STATUS,
+	};
+}
+
+export function userStatusSuccess(userStatus) {
+	return {
+		type: USER_STATUS_SUCCESS,
+		userStatus
+	};
+}
+
+export function userStatusFail(error) {
+	return {
+		type: USER_STATUS_FAIL,
+		error,
+	};
+}
+
+export function roomList(list) {
+	return {
+		type: ROOM_LIST,
+		list,
+	};
+}
+
+export function updateUserStatus(user, key, value) {
+	if (key === 'roomId') {
+		socket.emit('setUserName', { user, value });
+	}
+	if (key === 'userName') {
+		socket.emit('setUserRoomId', { user, value });
+	}
 }
 
 export function createRoom() {
@@ -79,31 +135,11 @@ export function createRoomFail() {
 	};
 }
 
-export function createChatRoom(roomInfo) {
+export function createChatRoom(user, roomInfo) {
 	return dispatch => {
 		dispatch(createRoom());
-		socket.emit('createRoom', roomInfo);
-		socket.on('createRoomSuccess', () => {
-			dispatch(createRoomSuccess());
-		});
-		socket.on('createRoomFail', () => {
-			dispatch(createRoomFail());
-		});
-	};
-}
-
-export function getRoomList(list) {
-	return {
-		type: GET_ROOM_LIST,
-		list,
-	};
-}
-
-export function getChatRoomList() {
-	return dispatch => {
-		socket.on('getRoomList', (list) => {
-			dispatch(getRoomList(list));
-		});
+		socket.emit('createRoom', { user, roomInfo });
+		
 	};
 }
 
