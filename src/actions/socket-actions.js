@@ -9,9 +9,9 @@ import {
 	CREATE_ROOM_SUCCESS,
 	CREATE_ROOM_FAIL,
 	ROOM_LIST,
-	ADD_ROOM,
-	ADD_ROOM_SUCCESS,
-	ADD_ROOM_FAIL,
+	JOIN_ROOM,
+	JOIN_ROOM_SUCCESS,
+	JOIN_ROOM_FAIL,
 	LEAVE_ROOM,
 	LEAVE_ROOM_SUCCESS,
 	LEAVE_ROOM_FAIL,
@@ -47,9 +47,8 @@ export function connectionFail(error) {
 
 export function onSocket() {
 	return dispatch => {
-		socket.on('connectionSuccess', userStatus => {
+		socket.on('connectionSuccess', () => {
 			dispatch(connectionSuccess());
-			dispatch(userStatusSuccess(userStatus));
 		});
 
 		socket.on('connectionFail', () => {
@@ -69,6 +68,14 @@ export function onSocket() {
 		});
 		socket.on('createRoomFail', () => {
 			dispatch(createRoomFail());
+		});
+
+		socket.on('joinRoomSuccess', () => {
+			dispatch(joinRoomSuccess());
+		});
+
+		socket.on('joinRoomFail', () => {
+			dispatch(joinRoomFail());
 		});
 	};
 }
@@ -146,23 +153,31 @@ export function createChatRoom(user, roomInfo) {
 	};
 }
 
-export function addRoom() {
+export function joinRoom() {
 	return {
-		type: ADD_ROOM,
+		type: JOIN_ROOM,
 	};
 }
 
-export function addRoomSuccess() {
+export function joinRoomSuccess() {
 	return {
-		type: ADD_ROOM_SUCCESS,
+		type: JOIN_ROOM_SUCCESS,
 	};
 }
 
-export function addRoomFail() {
+export function joinRoomFail() {
 	return {
-		type: ADD_ROOM_FAIL,
+		type: JOIN_ROOM_FAIL,
 	};
 }
+
+export function joinChatRoom(user, id) {
+	return dispatch => {
+		dispatch(joinRoom());
+		socket.emit('joinRoom', { user, id, });
+	};
+}
+
 export function leaveRoom() {
 	return {
 		type: LEAVE_ROOM,

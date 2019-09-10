@@ -12,9 +12,9 @@ export const CREATE_ROOM_FAIL = 'CREATE_ROOM_FAIL';
 
 export const ROOM_LIST = 'ROOM_LIST';
 
-export const ADD_ROOM = 'ADD_ROOM';
-export const ADD_ROOM_SUCCESS = 'ADD_ROOM_SUCCESS';
-export const ADD_ROOM_FAIL = 'ADD_ROOM_FAIL';
+export const JOIN_ROOM = 'JOIN_ROOM';
+export const JOIN_ROOM_SUCCESS = 'JOIN_ROOM_SUCCESS';
+export const JOIN_ROOM_FAIL = 'JOIN_ROOM_FAIL';
 
 export const LEAVE_ROOM = 'LEAVE_ROOM';
 export const LEAVE_ROOM_SUCCESS = 'LEAVE_ROOM_SUCCESS';
